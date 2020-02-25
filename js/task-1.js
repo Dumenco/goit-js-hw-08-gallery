@@ -1,10 +1,11 @@
 'use strict';
 // импортирую галлерею
-import { galleryItems } from './gallery-items.js';
+import galleryItems from './gallery-items.js';
 
 const galleryList = document.querySelector('.gallery');
 const modal = document.querySelector('.lightbox');
-const modalImg = document.querySelector('.lightbox__image');
+
+// const modalImg = document.querySelector('.lightbox__image');
 const closeBtnModal = document.querySelector('[data-action="close-lightbox"]');
 const modalCloseOver = document.querySelector('.lightbox__content');
 
@@ -18,7 +19,7 @@ const galleryItem = galleryItems.reduce((allItems, item) => {
     <img
       class="gallery__image"
       src="${item.preview}"
-      data-source="${item.origonal}"
+      data-source="${item.original}"
       alt="${item.description}"
     />
   </a>
@@ -27,10 +28,15 @@ const galleryItem = galleryItems.reduce((allItems, item) => {
 }, '');
 galleryList.insertAdjacentHTML('afterbegin', `${galleryItem}`);
 
+
+
+const modalImg = document.querySelector('.lightbox__image');
 // открытие модалки
 galleryList.addEventListener('click', (e) => {
 	event.preventDefault();
-	if (e.target === e.currentTarget) return;
+	if (e.target === e.currentTarget) 
+	return;
+
 	const imgLink = e.target.getAttribute('data-source');
 	const imgText = e.target.getAttribute('alt');
 	modalImg.setAttribute('src', imgLink);
