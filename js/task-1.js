@@ -4,8 +4,7 @@ import galleryItems from './gallery-items.js';
 
 const galleryList = document.querySelector('.gallery');
 const modal = document.querySelector('.lightbox');
-
-// const modalImg = document.querySelector('.lightbox__image');
+const modalImg = document.querySelector('.lightbox__image');
 const closeBtnModal = document.querySelector('[data-action="close-lightbox"]');
 const modalCloseOver = document.querySelector('.lightbox__content');
 
@@ -26,11 +25,8 @@ const galleryItem = galleryItems.reduce((allItems, item) => {
 </li>`;
 	return allItems;
 }, '');
-galleryList.insertAdjacentHTML('afterbegin', `${galleryItem}`);
+galleryList.insertAdjacentHTML('afterbegin', galleryItem);
 
-
-
-const modalImg = document.querySelector('.lightbox__image');
 // открытие модалки
 galleryList.addEventListener('click', (e) => {
 	event.preventDefault();
